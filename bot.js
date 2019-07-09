@@ -8,9 +8,9 @@ const fs = require('fs');
 const ms = require('ms');
 const prefix = '#'
 
-client.on('message', msg => {
+ client.on('message', msg => {
     if (msg.content === 'test') {
-      msg.reply('I’m On');
+     msg.channel.send('Im On');
     }
   });
   
