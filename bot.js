@@ -1081,7 +1081,7 @@ client.on("message", message => {
               return  message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء الى البوتات رتبة**');
           } else if( args[0].toLowerCase() == "humans" ){
               message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.addRole(role1))
-              return  message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء الى البشريين رتبة**');
+              return  msg.channel.send('**:white_check_mark: [ '+role1.name+' ] تم اعطاء الى البشريين رتبة**');
           }  
       } else {
           if( !args[0] ) return message.reply( '**:x: يرجى وضع الشخص المراد اعطائها الرتبة**' );
