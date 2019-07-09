@@ -943,12 +943,12 @@ client.on('message', message => {
 var prefix = "#";
       if(message.content === prefix + "hchannel") {
       if(!message.channel.guild) return;
-      if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You Dont Have Perms :x:');
+      if(!message.member.hasPermission('ADMINISTRATOR')) return msg.channel.send('You Dont Have Perms :x:');
              message.channel.overwritePermissions(message.guild.id, {
              READ_MESSAGES: false
  })
               message.channel.send('Channel Hided Successfully ! :white_check_mark:  ')
- }
+ } 
 });
 
 client.on('message',async Epic => {
@@ -1071,7 +1071,7 @@ client.on("message", message => {
           var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first();
           if( !role1 ) return message.reply( '**:x: يرجى وضع الرتبة المراد اعطاءها الى الشخص**' );if( message.mentions.members.first() ){
               message.mentions.members.first().addRole( role1 );
-              return message.reply('**:white_check_mark: [ '+role1.name+' ] رتبة [ '+args[0]+' ] تم اعطاء الى **');
+              return msg.channel.send('**:white_check_mark: [ '+role1.name+' ] تم اعطاء العضو رتبة  **');
           }
           if( args[0].toLowerCase() == "all" ){
               message.guild.members.forEach(m=>m.addRole( role1 ))
