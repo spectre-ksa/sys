@@ -2529,7 +2529,7 @@ const Sra7a = [
    client.on('message', message => {
        if (message.author.bot) return;
  if (message.content.startsWith('#sara7a')) {
-     if(!message.channel.guild) return message.reply('** This command only for servers **');
+     if(!message.channel.guild) return message.channel.send('** This command only for servers **');
   var client= new Discord.RichEmbed()
   .setTitle("لعبة صراحة ..")
   .setColor('RANDOM')
@@ -2561,7 +2561,7 @@ client.on('message', msg => {
   command = command.slice(prefix.length);
   let args = msg.content.split(" ").slice(1);
 
-    if(command === "مسح") {
+    if(command === "مسح") || if(command === "#clear"){
         const emoji = client.emojis.find("name", "wastebasket")
     let textxt = args.slice(0).join("");
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
