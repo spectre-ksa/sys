@@ -1328,7 +1328,7 @@ message.author.send(`**مدة الرابط : يـوم
 client.on("message", msg => {
     var prefix = "#";
 if(msg.content.startsWith (prefix + "user")) {
-if(!msg.channel.guild) return  message.channel.send('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
+if(!msg.channel.guild) return  message.channel.send('**:x: sorry this command is only for servers **');         
 const embed = new Discord.RichEmbed();
 embed.addField(":cloud_tornado:  الاسم", `**[ ${msg.author.username}#${msg.author.discriminator} ]**`, true)
    .addField(":id:  الايدي", `**[ ${msg.author.id} ]**`, true)
@@ -1350,7 +1350,7 @@ client.on('message', message=>{
     if(message.author.bot) return;  
     if(!message.channel.guild) return;
     if(message.content.startsWith(prefix+'setlog')) {  
-    if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("**تحتاج الى `MANAGE_CHANNELS`**");
+    if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("**:rolling_eyes: you gonna need `MANAGE_CHANNELS`**");
     let log = message.guild.channels.find("name", "log")  
     if(log) return message.reply("**There is already a Room Log**")   
     if(!log) {   
@@ -2561,7 +2561,7 @@ client.on('message', msg => {
   command = command.slice(prefix.length);
   let args = msg.content.split(" ").slice(1);
 
-    if(command === "clr") {
+    if(command === "مسح") {
         const emoji = client.emojis.find("name", "wastebasket")
     let textxt = args.slice(0).join("");
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
