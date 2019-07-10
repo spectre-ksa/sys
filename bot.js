@@ -3718,6 +3718,75 @@ client.on("message", msg => {
 
 
 
+let anti = JSON.parse(fs.readFileSync("./antigreff.json", "UTF8"));
+let config = JSON.parse(fs.readFileSync("./config.json", "UTF8"));
+var prefix = ("#")
+client.on("message", message => {
+    if (!message.channel.guild) return;
+    let user = anti[message.guild.id + message.author.id]
+    let num = message.content.split(" ").slice(2).join(" ");
+    if (!anti[message.guild.id + message.author.id]) anti[message.guild.id + message.author.id] = {
+        actions: 0
+    }
+    if (!config[message.guild.id]) config[message.guild.id] = {
+        banLimit: 3,
+        chaDelLimit: 3,
+        roleDelLimit: 3,
+        kickLimits: 3,
+        roleCrLimits: 3,
+        time: 30
+    }
+    if (message.content.startsWith(prefix + "settings limits")) {
+
+
+        if (!message.member.hasPermission('MANAGE_GUILD')) return;
+        if (message.content.startsWith(prefix + "settings limitsban")) {
+            if (!num) return message.channel.send("**⇏ | send a number ! ! **");
+            if (isNaN(num)) return message.channel.send("**⇏ | numbers only ! **");
+            config[message.guild.id].banLimit = num;
+            message.channel.send(`**⇏ | changed to : ${config[message.guild.id].banLimit} **`)
+        }
+        if (message.content.startsWith(prefix + "settings limitskick")) {
+                        if (!num) return message.channel.send("**⇏ | send a number ! ! **");
+                        if (isNaN(num)) return message.channel.send("**⇏ | numbers only ! **");
+            config[message.guild.id].kickLimits = num;
+            message.channel.send(`**⇏ | changed to : ${config[message.guild.id].kickLimits}**`)
+        }
+        if (message.content.startsWith(prefix + "settings limitsroleD")) {
+                        if (!num) return message.channel.send("**⇏ | send a number ! ! **");
+                        if (isNaN(num)) return message.channel.send("**⇏ | numbers only ! **");
+            config[message.guild.id].roleDelLimit = num;
+            message.channel.send(`**⇏ | changed to : ${config[message.guild.id].roleDelLimit}**`)
+        }
+        if (message.content.startsWith(prefix + "settings limitsroleC")) {
+                        if (!num) return message.channel.send("**⇏ | send a number ! ! **");
+                        if (isNaN(num)) return message.channel.send("**⇏ | numbers only ! **");
+            config[message.guild.id].roleCrLimits = num;
+            message.channel.send(`**⇏ | changed to : ${config[message.guild.id].roleCrLimits}**`)
+        }
+        if (message.content.startsWith(prefix + "settings limitschannelD")) {
+                        if (!num) return message.channel.send("**⇏ | send a number ! ! **");
+                        if (isNaN(num)) return message.channel.send("**⇏ | numbers only ! **");
+            config[message.guild.id].chaDelLimit = num;
+            message.channel.send(`**⇏ | changed to : ${config[message.guild.id].chaDelLimit}**`)
+        }
+        if (message.content.startsWith(prefix + "settings limitstime")) {
+                        if (!num) return message.channel.send("**⇏ | send a number ! ! **");
+                        if (isNaN(num)) return message.channel.send("**⇏ | numbers only ! **");
+            config[message.guild.id].time = num;
+            message.channel.send(`**⇏ | changed to : ${config[message.guild.id].time}**`)
+        }
+        fs.writeFile("./config.json", JSON.stringify(config, null, 2), function (e) {
+            if (e) throw e;
+        });
+        fs.writeFile("./antigreff.json", JSON.stringify(anti, null, 2), function (e) {
+            if (e) throw e;
+        });
+    }
+});
+
+
+
 
   client.on("message", function(message) {
     var prefix = "#";
@@ -3785,6 +3854,7 @@ reaction1.on("collect", r => {
 『#rules ====> يعرض لك قوانين السيرفر
 『#v2min ====> لصنع روم صوتي مؤقت
 『#inv ====> لدعوة البوت الى سيرفرك
+『#moveme ====> انتقال من روم لأخر
 **
 `)
    message.author.sendEmbed(embed)
