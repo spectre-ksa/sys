@@ -1350,7 +1350,7 @@ client.on('message', message=>{
     if(message.author.bot) return;  
     if(!message.channel.guild) return;
     if(message.content.startsWith(prefix+'setlog')) {  
-    if(!message.member.hasPermission('ADMINISTRATOR')) 
+    if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("**تحتاج الى `MANAGE_CHANNELS`**");
     let log = message.guild.channels.find("name", "log")  
     if(log) return message.reply("**There is already a Room Log**")   
     if(!log) {   
@@ -2231,13 +2231,33 @@ client.on("message", message => {
   
        
   });
+client.on("message", message => { 
+              var args = message.content.substring(prefix.length).split(" ");
+              if (message.content.startsWith("مسح")) {
+                  if(!message.channel.guild) return message.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');         
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) 
+          var msg;
+          msg = parseInt();
+        
+        message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+        message.channel.sendMessage("", {embed: {
+          title: "تــم مسح الشات",
+          color: 0x5016f3, 
+          footer: {
+            
+          }
+        }}).then(msg => {msg.delete(3000)});
+                            }
+  
+       
+  });
 
 
 
 
 
 client.on('message', message => {
-    if(message.content == 'P.members') {
+    if(message.content == '#members') {
     const embed = new Discord.RichEmbed()
     .setDescription(`**حالات الاعضاء🔋
 :green_heart: اونلاين   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
