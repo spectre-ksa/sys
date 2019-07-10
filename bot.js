@@ -1063,7 +1063,7 @@ client.on("message", message => {
       var msg = message.content.toLowerCase();
       if( !message.guild ) return;
       if( !msg.startsWith( prefix + 'role' ) ) return;
-      if(!message.member.hasPermission('MANAGE_ROLES')) 
+      if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send('**:rolling_eyes: This gonna need ``MANAGE_ROLE``**')
       if( msg.toLowerCase().startsWith( prefix + 'roleembed' ) ){
           if( !args[0] ) return message.channel.sendEmbed(roleembed)
           if( !args[1] ) return message.channel.sendEmbed(roleembed)
@@ -1117,7 +1117,7 @@ client.on("message", (message) => {
             let role = message.guild.roles.find("name", "Support Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             c.overwritePermissions(role, {
-                SEND_MESSAGES: true,
+                SEND_MESSAGES: true, 
                 READ_MESSAGES: true
             });     
             c.overwritePermissions(role2, {
