@@ -2214,7 +2214,7 @@ client.on("message", message => {
 
 client.on("message", message => { 
               var args = message.content.substring(prefix.length).split(" ");
-              if (message.content.startsWith(prefix + "clear") , (message.content.startsWith("مسح")) {
+              if (message.content.startsWith(prefix + "clear")) {
                   if(!message.channel.guild) return message.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');         
      if(!message.member.hasPermission('MANAGE_MESSAGES')) 
           var msg;
