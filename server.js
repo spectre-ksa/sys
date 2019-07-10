@@ -8,7 +8,7 @@ const fetchVideoInfo = require("youtube-info");
 const bot = require('./package.json');
 const simpleytapi = require('simple-youtube-api')
 const youtube = new simpleytapi(yt_api_key);
-const config = require('../config/config.json')
+const config = require('../botlogin.js')
 const prefix = config.prefix;
 client.login(config.token);
 var guilds = {};
