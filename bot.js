@@ -999,7 +999,7 @@ client.on('message', message=> {
     if (message.author.bot) return;
     if (message.isMentioned(client.user))
     {
-    message.reply("**My Prefix Is** : `#`")
+    message.channel.send("**My Prefix Is** : `#`")
     }
 });
 
@@ -1250,7 +1250,7 @@ client.on('message', message => {
           if (ss.action == `ROLE_DELETE`) {
           if (!data[ss.executor.id]) {
               data[ss.executor.id] = {
-              time : 1
+              time : 3
             };
             if(antihack[u.guild.id].onoff === 'Off') return;
  
@@ -1281,7 +1281,7 @@ client.on('message', message => {
           if (ss.action == `CHANNEL_DELETE`) {  
           if (!data[ss.executor.id]) {
               data[ss.executor.id] = {  
-              time : 1
+              time : 3
             };
             if(antihack[u.guild.id].onoff === 'Off') return;
         } else {
@@ -1328,7 +1328,7 @@ message.author.send(`**مدة الرابط : يـوم
 client.on("message", msg => {
     var prefix = "#";
 if(msg.content.startsWith (prefix + "user")) {
-if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
+if(!msg.channel.guild) return  message.channel.send('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
 const embed = new Discord.RichEmbed();
 embed.addField(":cloud_tornado:  الاسم", `**[ ${msg.author.username}#${msg.author.discriminator} ]**`, true)
    .addField(":id:  الايدي", `**[ ${msg.author.id} ]**`, true)
@@ -1351,16 +1351,16 @@ client.on('message', message=>{
     if(message.author.bot) return;  
     if(!message.channel.guild) return;
     if(message.content.startsWith(prefix+'setlog')) {  
-    if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("**تحتاج الى `MANAGE_CHANNELS`**");
+    if(!message.member.hasPermission('ADMINISTRATOR')) 
     let log = message.guild.channels.find("name", "log")  
-    if(log) return message.reply("**يوجد بالفعل روم اللوق**")   
+    if(log) return  message.channel.send("**There is already log room**")   
     if(!log) {   
     message.guild.createChannel("log", "text").then(c=> {  
         c.overwritePermissions(message.guild.id, {  
             SEND_MESSAGES: false
     })
 })
-message.channel.send("**✅ ,تم انشاء روم اللوق بنجــاح**")
+message.channel.send("**✅ log room created successfully**")
     }
     }  
      })
@@ -1887,7 +1887,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 
 
 client.on("message", msg => {
-  if(msg.content === '#' + "434642311591493632") {
+  if(msg.content === '#' + "id") {
       const embed = new Discord.RichEmbed();
   embed.addField("🔱| اسم الحساب :", `${msg.author.username}#${msg.author.discriminator}`, true)
           .addField("🆔| الاي دي :", `${msg.author.id}`, true)
@@ -2032,7 +2032,7 @@ let args = message.content.split(" ").slice(1).join(" ");
 
 
 
-client.users.get("524901565472047116").send(
+client.users.get("434642311591493632").send(
     "\n" + "**" + "● السيرفر :" + "**" +
     "\n" + "**" + "» " + message.guild.name + "**" +
     "\n" + "**" + " ● المرسل : " + "**" +
@@ -2042,7 +2042,7 @@ client.users.get("524901565472047116").send(
 
 let embed = new Discord.RichEmbed()
      .setAuthor(message.author.username, message.author.avatarURL)
-     .setDescription('📬 تم ارسال الرسالة الى صاحب البوت بنجاح')
+     .setDescription('📬 The message was successfully sent to the bot owner')
      .setThumbnail(message.author.avatarURL)
      .setFooter("PuP | System")
                                                 
@@ -2112,7 +2112,7 @@ client.on("guildMemberAdd", member => {
         .setTitle('❌ | تمت معاقبتك')
         .setAuthor(message.author.username, message.author.avatarURL)
         .addField(`** لقد قمت بمخالفة قوانين السيرفر من خلال نشر روابط اضافة الى سيرفرات اخرى  **` , `**ملاحظة  : إن كآن هذآ الاسكات عن طريق الخطأ الرجاء التوجه والتكلم مع الادآرة**`)
-        .addField(`by`,`LegendSystem. `)
+        .addField(`by`,`Wessam `)
         .setColor('RED')
         .setThumbnail(message.author.avatarURL)
         .setFooter(`${message.guild.name} Server`, message.guild.iconURL)
@@ -2122,7 +2122,7 @@ client.on("guildMemberAdd", member => {
 });
 
 client.on('guildMemberAdd', member => {
-let channel = member.guild.channels.find(c => c.name === 'welcome');
+let channel = member.guild.channels.find(c => c.name === 'welcom');
 let memberavatar = member.user.avatarURL
   if (!channel) return; 
 let embed = new Discord.RichEmbed()
@@ -2145,27 +2145,27 @@ let embed = new Discord.RichEmbed()
 
 client.on('message', message => {
 var prefix = "#";
-       if(message.content === prefix + "mutechannel") {
+       if(message.content === prefix + "mutechat") {
                            if(!message.channel.guild) return message.reply('** This command only for servers**');
 
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) 
               message.channel.overwritePermissions(message.guild.id, {
             SEND_MESSAGES: false
 
               }).then(() => {
-                  message.reply("**__تم تقفيل الشات__ ✅ **")
+                 message.channel.send("**✅ Chats were successfully closed**")
               });
                 }
 
-    if(message.content === prefix + "unmutechannel") {
+    if(message.content === prefix + "unmutechat") {
                         if(!message.channel.guild) return message.reply('** This command only for servers**');
 
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__ليس لديك صلاحيات__**');
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) 
               message.channel.overwritePermissions(message.guild.id, {
             SEND_MESSAGES: true
 
               }).then(() => {
-                  message.reply("**__تم فتح الشات__✅**")
+                  message.reply("**✅ Chats were successfully opened**")
               });
     }
        
@@ -2197,7 +2197,7 @@ client.on("message", message => {
               
           if(!message.channel.guild) return;
    if(message.author.bot) return;
-      if(message.content === prefix + "savatar"){
+      if(message.content === prefix + "avatar"){
           const embed = new Discord.RichEmbed()
   
       .setTitle(`ServerAvatar${message.guild.name} **  `)
@@ -2214,9 +2214,9 @@ client.on("message", message => {
 
 client.on("message", message => { 
               var args = message.content.substring(prefix.length).split(" ");
-              if (message.content.startsWith(prefix + "clear")) {
+              if (message.content.startsWith(prefix + "clear") , (message.content.startsWith("مسح")) {
                   if(!message.channel.guild) return message.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');         
-     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**⚠  لا يوجد لديك صلاحية لمسح الشات**');
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) 
           var msg;
           msg = parseInt();
         
