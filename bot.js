@@ -1350,7 +1350,7 @@ client.on('message', message=>{
     if(message.author.bot) return;  
     if(!message.channel.guild) return;
     if(message.content.startsWith(prefix+'setlog')) {  
-    if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("**تحتاج الى `MANAGE_CHANNELS`**");
+    if(!message.member.hasPermission('ADMINISTRATOR')) 
     let log = message.guild.channels.find("name", "log")  
     if(log) return message.reply("**There is already a Room Log**")   
     if(!log) {   
