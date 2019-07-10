@@ -1346,14 +1346,13 @@ msg.channel.send({embed: embed})
 });
 
 
-
 client.on('message', message=>{  
     if(message.author.bot) return;  
     if(!message.channel.guild) return;
     if(message.content.startsWith(prefix+'setlog')) {  
-    if(!message.member.hasPermission('ADMINISTRATOR')) 
+    if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("**تحتاج الى `MANAGE_CHANNELS`**");
     let log = message.guild.channels.find("name", "log")  
-    if(log) return  message.channel.send("**There is already log room**")   
+    if(log) return message.reply("**There is already a Room Log**")   
     if(!log) {   
     message.guild.createChannel("log", "text").then(c=> {  
         c.overwritePermissions(message.guild.id, {  
