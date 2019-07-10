@@ -2147,7 +2147,7 @@ var prefix = "#";
        if(message.content === prefix + "mutechat") {
                            if(!message.channel.guild) return message.channel.send('** This command only for servers**');
 
-   if(!message.member.hasPermission('MANAGE_MESSAGES'))  
+   if(!message.member.hasPermission('MANAGE_MESSAGES'))  return message.channel.send('** This command only for servers**');
               message.channel.overwritePermissions(message.guild.id, {
             SEND_MESSAGES: false
 
@@ -2158,8 +2158,7 @@ var prefix = "#";
 
     if(message.content === prefix + "unmutechat") {
                         if(!message.channel.guild) return message.channel.send('** This command only for servers**');
-
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) 
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('** This command needs ``MANAGE_MESSAGE``**')
               message.channel.overwritePermissions(message.guild.id, {
             SEND_MESSAGES: true
 
@@ -2196,7 +2195,7 @@ client.on("message", message => {
               
           if(!message.channel.guild) return;
    if(message.author.bot) return;
-      if(message.content === prefix + "avatar"){
+      if(message.content === prefix + "savatar"){
           const embed = new Discord.RichEmbed()
   
       .setTitle(`ServerAvatar${message.guild.name} **  `)
