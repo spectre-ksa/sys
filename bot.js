@@ -2145,9 +2145,9 @@ let embed = new Discord.RichEmbed()
 client.on('message', message => {
 var prefix = "#";
        if(message.content === prefix + "mutechat") {
-                           if(!message.channel.guild) return message.reply('** This command only for servers**');
+                           if(!message.channel.guild) return message.channel.send('** This command only for servers**');
 
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('**❌ Sorry you don't have MANAGE_ROLE **');
+   if(!message.member.hasPermission('MANAGE_MESSAGES'))  
               message.channel.overwritePermissions(message.guild.id, {
             SEND_MESSAGES: false
 
