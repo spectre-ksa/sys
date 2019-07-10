@@ -1063,7 +1063,7 @@ client.on("message", message => {
       var msg = message.content.toLowerCase();
       if( !message.guild ) return;
       if( !msg.startsWith( prefix + 'role' ) ) return;
-      if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(' **__ليس لديك صلاحيات__**');
+      if(!message.member.hasPermission('MANAGE_ROLES')) 
       if( msg.toLowerCase().startsWith( prefix + 'roleembed' ) ){
           if( !args[0] ) return message.channel.sendEmbed(roleembed)
           if( !args[1] ) return message.channel.sendEmbed(roleembed)
