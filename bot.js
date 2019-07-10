@@ -3488,7 +3488,7 @@ ${message.author.id}`);
    
    client.on('message', message => {
 	var prefix = "#";
-    if(message.content.startsWith(prefix + 'mvall')) {
+    if(message.content.startsWith(prefix + 'moveall')) {
      if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send('**:x: You Dont Have Perms `MOVE_MEMBERS`**');
        if(!message.guild.member(client.user).hasPermission("MOVE_MEMBERS")) return message.reply("**:x: I Dont Have Perms `MOVE_MEMBERS`**");
     if (message.member.voiceChannel == null) return message.channel.send(`**You Have To Be In Room Voice**`)
@@ -3722,7 +3722,7 @@ client.on('message', async message => {
 if(!points) points = {}
 
 	if(message.channel.type !== 'text') return;
-	
+	var prefix = ("#")
 	
 	var command = message.content.toLowerCase().split(" ")[0];
 	var args = message.content.toLowerCase().split(" ");
@@ -3749,7 +3749,7 @@ if(!points) points = {}
 **:small_orange_diamond:** .points reset \`لتصفير جميع النقاط\``)
 .setFooter('Requested by '+message.author.username, message.author.avatarURL)
 .setColor(`#e60909`)
-if(command == '#'+ 'points') {
+if(command == prefix + 'points') {
 	 
 		if(!message.guild.member(client.user).hasPermission('EMBED_LINKS')) return message.channel.send(':no_entry: | I dont have Embed Links permission.');
 		if(!args[1]) {
