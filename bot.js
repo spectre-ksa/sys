@@ -2104,7 +2104,7 @@ client.on("guildMemberAdd", member => {
 
 	client.on('message', message => {
     if(message.content.includes('discord.gg/')) {
-        if(message.member.hasPermission('ADMINISTRATOR')) return;
+        if(message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('**❌ Sorry you don't have adminstrator role **');
         message.delete();
         message.guild.member(message.author).addRole(message.guild.roles.find(r => r.name === 'Muted'));
         let embedP = new Discord.RichEmbed()
@@ -2147,7 +2147,7 @@ var prefix = "#";
        if(message.content === prefix + "mutechat") {
                            if(!message.channel.guild) return message.reply('** This command only for servers**');
 
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) 
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('**❌ Sorry you don't have MANAGE_ROLE **');
               message.channel.overwritePermissions(message.guild.id, {
             SEND_MESSAGES: false
 
@@ -2157,14 +2157,14 @@ var prefix = "#";
                 }
 
     if(message.content === prefix + "unmutechat") {
-                        if(!message.channel.guild) return message.reply('** This command only for servers**');
+                        if(!message.channel.guild) return message.channel.send('** This command only for servers**');
 
    if(!message.member.hasPermission('MANAGE_MESSAGES')) 
               message.channel.overwritePermissions(message.guild.id, {
             SEND_MESSAGES: true
 
               }).then(() => {
-                  message.reply("**✅ Chats were successfully opened**")
+                  message.channel.send("**✅ Chats were successfully opened**")
               });
     }
        
@@ -2214,7 +2214,7 @@ client.on("message", message => {
 client.on("message", message => { 
               var args = message.content.substring(prefix.length).split(" ");
               if (message.content.startsWith(prefix + "clear")) {
-                  if(!message.channel.guild) return message.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');         
+                  if(!message.channel.guild) return message.channel.send('**❌ اسف لكن هذا الامر للسيرفرات فقط **');         
      if(!message.member.hasPermission('MANAGE_MESSAGES')) 
           var msg;
           msg = parseInt();
