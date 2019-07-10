@@ -2950,7 +2950,7 @@ var args = message.content.split(" ").slice(1);
     if(command == "mute") {
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tomute) return message.channel.send("**:rolling_eyes: I can’t find this member** ") 
-    if(tomute.hasPermission("MANAGE_MESSAGES"))return      message.channel.send('**Unfortunately I do not have this role** `MANAGE_MASSAGEES`');
+    if(tomute.hasPermission("MANAGE_MESSAGES")) return message.channel.send('**Unfortunately I do not have this role** `MANAGE_MASSAGEES`');
     let muterole = message.guild.roles.find(`name`, "Muted");
     //start of create role
     if(!muterole){
@@ -3182,15 +3182,6 @@ client.on('message' , message => {
 }
 });
   
-client.on('typingStart', (ch, user) => {
-      if(user.presence.status === 'offline') {
-
-          ch.send(`${user}☹ هاهاهاا , كشفتك وانت تكتب ي اوف لاين✉`)
-          .then(msg => {
-              msg.delete(10000)
-          })
-      }
-  })
 
 
    
