@@ -21,7 +21,7 @@ const prefix = '#'
        var nam = args.join(' ');
     
       if(!message.member.hasPermission('ADMINISTRATOR')) return    message.channel.send('Unfortunately this is what you need `ADMINISTRATOR` ')
-      if (!nam) return message.channel.send('<@${message.author.id}>You must enter a name`)
+      if (!nam) return message.channel.send('You must enter a name')
       message.guild.createChannel(nam, 'voice').then(c => setTimeout(() => c.delete(), 120000)) 
       message.channel.send(`:ballot_box_with_check: TemporarySound : \`${nam}\``).then(c => setTimeout(() => c.edit(`<@${message.author.id}> :stopwatch: The Room time is over`), 120000)) 
     }
