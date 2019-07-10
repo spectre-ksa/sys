@@ -2949,7 +2949,7 @@ command = command.slice(prefix.length);
 var args = message.content.split(" ").slice(1);
     if(command == "mute") {
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!tomute) return message.channel.send("**:rolling_eyes I can’t find this member**:x: ") 
+    if(!tomute) return message.channel.send("**:rolling_eyes: I can’t find this member** ") 
     if(tomute.hasPermission("MANAGE_MESSAGES"))return      message.channel.send('**Unfortunately I do not have this role** `MANAGE_MASSAGEES`');
     let muterole = message.guild.roles.find(`name`, "Muted");
     //start of create role
@@ -2973,7 +2973,7 @@ var args = message.content.split(" ").slice(1);
     }
     //end of create role
     let mutetime = args[1];
-    if(!mutetime) return message.channel.send("**:rolling_eyes Please specify the time of departure**:x:");
+    if(!mutetime) return message.channel.send("**:rolling_eyes: Please specify the time of departure**");
  
     await(tomute.addRole(muterole.id));
 message.channel.send(`<@${tomute.id}> **is muted from the text :zipper_mouth:`);
@@ -2990,7 +2990,7 @@ if(command === `unmute`) {
 if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I Don't Have `MANAGE_ROLES` Permission**").then(msg => msg.delete(6000))
  
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-  if(!toMute) return message.channel.sendMessage("**:rolling_eyes I can’t find this member**:x: ");
+  if(!toMute) return message.channel.sendMessage("**:rolling_eyes: I can’t find this member**");
  
   let role = message.guild.roles.find (r => r.name === "Muted");
  
