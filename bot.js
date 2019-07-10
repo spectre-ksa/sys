@@ -2951,7 +2951,7 @@ if (!message.content.startsWith(prefix)) return;
 		let user = message.mentions.users.first();
 		let muteRole = message.guild.roles.find("name", "Muted");
 		if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").then(msg => {msg.delete(5000)});
-		if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
+		if (message.mentions.users.size < 1) return message.channel.send('**:rolling_eyes: I can’t this member **')
 		let reason = message.content.split(" ").slice(2).join(" ");
 		message.guild.member(user).addRole(muteRole);
 		const muteembed = new Discord.RichEmbed()
@@ -3060,7 +3060,7 @@ message.channel.send(`**:white_check_mark: ${user.tag} banned from the server ! 
 });
 
 client.on('message', message => {
-            var prefix = "P.";
+            var prefix = "#";
     if (message.author.bot) return;
     if (!message.content.startsWith(prefix)) return;
 
