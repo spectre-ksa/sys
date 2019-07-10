@@ -1071,7 +1071,7 @@ client.on("message", message => {
           var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first();
           if( !role1 ) return  message.channel.send( '**:x: يرجى وضع الرتبة المراد اعطاءها الى الشخص**' );if( message.mentions.members.first() ){
               message.mentions.members.first().addRole( role1 );
-              return message.channel.send('**:white_check_mark Changed: role fo '+args+' '+role1.name+'**');
+              return message.channel.send('**:white_check_mark: Changed role for '+args+' '+role1.name+'**');
           }
           if( args[0].toLowerCase() == "all" ){
               message.guild.members.forEach(m=>m.addRole( role1 ))
@@ -1088,9 +1088,9 @@ client.on("message", message => {
           if( !args[1] ) return  message.channel.send( '**:rolling_eyes: please specify one role name**' );
           var role = msg.split(' ').slice(2).join(" ").toLowerCase();
           var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first();
-          if( !role1 ) return  message.channel.send( '**::rolling_eyes: please specify one role name**' );if( message.mentions.members.first() ){
+          if( !role1 ) return  message.channel.send( '**:rolling_eyes: please specify one role name**' );if( message.mentions.members.first() ){
               message.mentions.members.first().addRole( role1 );
-              return  message.channel.send('**:white_check_mark Changed role: fo '+args+' '+role1.name+'**');
+              return  message.channel.send('**:white_check_mark: Changed role for '+args+' '+role1.name+'**');
           }
           if( args[0].toLowerCase() == "all" ){
               message.guild.members.forEach(m=>m.addRole( role1 ))
