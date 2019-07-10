@@ -775,7 +775,7 @@ const pics = JSON.parse(fs.readFileSync('./pics.json' , 'utf8'));
   if(message.content.startsWith(prefix + "toggleMedia")) {
           if (!message.channel.guild) return;
 
-      if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+      if(!message.channel.guild) return  msg.channel.send('**This Command Only For Servers**');
       if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
       if(!pics[message.guild.id]) pics[message.guild.id] = {
         onoff: 'Off'
@@ -1018,7 +1018,7 @@ client.on("message", async message => {
 if(cmd === `#{prefix}8ball`){
 
 
-if(!args[1]) return message.reply("Please ask a full question!");
+if(!args[1]) return  msg.channel.send("Please ask a full question!");
 let replies = ["Yes", "No.", "I don't know.", "Ask again later plez."];
 
   let result = Math.floor((Math.random() * replies.length));
@@ -1038,8 +1038,8 @@ const Love = [  "**احبك / عدد قطرات المـــطر والشجر و
 
 
  client.on('message', message => {
-   if (message.content.startsWith("P.love")) {
-                if(!message.channel.guild) return message.reply('** This command only for servers**');
+   if (message.content.startsWith("#love")) {
+                if(!message.channel.guild) return  msg.channel.send('** This command only for servers**');
   var embed = new Discord.RichEmbed()
   .setColor(0xd3d0c4)
      .setFooter(`PuP System`)
@@ -1069,7 +1069,7 @@ client.on("message", message => {
           if( !args[1] ) return message.channel.sendEmbed(roleembed)
           var role = msg.split(' ').slice(2).join(" ").toLowerCase();
           var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first();
-          if( !role1 ) return message.reply( '**:x: يرجى وضع الرتبة المراد اعطاءها الى الشخص**' );if( message.mentions.members.first() ){
+          if( !role1 ) return  msg.channel.send( '**:x: يرجى وضع الرتبة المراد اعطاءها الى الشخص**' );if( message.mentions.members.first() ){
               message.mentions.members.first().addRole( role1 );
               return msg.channel.send('**:white_check_mark: [ '+role1.name+' ] تم اعطاء العضو رتبة  **');
           }
@@ -1084,23 +1084,23 @@ client.on("message", message => {
               return  msg.channel.send('**:white_check_mark: [ '+role1.name+' ] تم اعطاء الى البشريين رتبة**');
           }  
       } else {
-          if( !args[0] ) return message.reply( '**:x: يرجى وضع الشخص المراد اعطائها الرتبة**' );
-          if( !args[1] ) return message.reply( '**:x: يرجى وضع الرتبة المراد اعطائها للشخص**' );
+          if( !args[0] ) return  msg.channel.send( '**:x: يرجى وضع الشخص المراد اعطائها الرتبة**' );
+          if( !args[1] ) return  msg.channel.send( '**:x: يرجى وضع الرتبة المراد اعطائها للشخص**' );
           var role = msg.split(' ').slice(2).join(" ").toLowerCase();
           var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first();
-          if( !role1 ) return message.reply( '**:x: يرجى وضع الرتبة المراد اعطائها للشخص**' );if( message.mentions.members.first() ){
+          if( !role1 ) return  msg.channel.send( '**:x: يرجى وضع الرتبة المراد اعطائها للشخص**' );if( message.mentions.members.first() ){
               message.mentions.members.first().addRole( role1 );
-              return message.reply('**:white_check_mark: [ '+role1.name+' ] رتبة [ '+args[0]+' ] تم اعطاء **');
+              return  msg.channel.send('**:white_check_mark: [ '+role1.name+' ] رتبة [ '+args[0]+' ] تم اعطاء **');
           }
           if( args[0].toLowerCase() == "all" ){
               message.guild.members.forEach(m=>m.addRole( role1 ))
-              return  message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء الكل رتبة**');
+              return   msg.channel.send('**:white_check_mark: [ '+role1.name+' ] تم اعطاء الكل رتبة**');
           } else if( args[0].toLowerCase() == "bots" ){
               message.guild.members.filter(m=>m.user.bot).forEach(m=>m.addRole(role1))
-              return  message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء البوتات رتبة**');
+              return   msg.channel.send('**:white_check_mark: [ '+role1.name+' ] تم اعطاء البوتات رتبة**');
           } else if( args[0].toLowerCase() == "humans" ){
               message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.addRole(role1))
-              return  message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء البشريين رتبة**');
+              return   msg.channel.send('**:white_check_mark: [ '+role1.name+' ] تم اعطاء البشريين رتبة**');
           }
       }
   });
