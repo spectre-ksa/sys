@@ -2104,7 +2104,7 @@ client.on("guildMemberAdd", member => {
 
 	client.on('message', message => {
     if(message.content.includes('discord.gg/')) {
-        if(message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('**❌ Sorry you don't have adminstrator role **');
+        if(message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('**❌ Sorry you don’t have adminstrator role **');
         message.delete();
         message.guild.member(message.author).addRole(message.guild.roles.find(r => r.name === 'Muted'));
         let embedP = new Discord.RichEmbed()
