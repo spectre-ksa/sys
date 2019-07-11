@@ -4169,7 +4169,7 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
 
  
  client.on('message', message => {
-    if(message.content.startsWith(prefix + "antijoin on")) {
+    if(message.content.startsWith("#" + "antijoin on")) {
         if(!message.channel.guild) return;
         if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
 antijoin[message.guild.id] = {
@@ -4189,7 +4189,7 @@ message.channel.send(`**✅ The AntiJoin Is __𝐎𝐍__ !**`)
 
 
 client.on('message', message => {
-    if(message.content.startsWith(prefix + "antijoin off")) {
+    if(message.content.startsWith("#" + "antijoin off")) {
         if(!message.channel.guild) return;
         if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
 antijoin[message.guild.id] = {
