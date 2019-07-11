@@ -3718,10 +3718,10 @@ client.on("message", msg => {
 
 
 
-const prefix = "#"
+
 client.on('message', async message => {
 if(!points) points = {}
-
+const prefix = "#"
 	if(message.channel.type !== 'text') return;
 	
 	
