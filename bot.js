@@ -3720,8 +3720,8 @@ client.on("message", msg => {
 
 client.on('message', async message => {
 if(!points) points = {}
-var prefix = ("#")
-	if(message.channel.type !== 'text') return;
+
+	if(message.channel.type !=='text') return;
 	
 	
 	var command = message.content.toLowerCase().split(" ")[0];
@@ -3749,7 +3749,7 @@ var prefix = ("#")
 **:small_orange_diamond:** .points reset \`لتصفير جميع النقاط\``)
 .setFooter('Requested by '+message.author.username, message.author.avatarURL)
 .setColor(`#e60909`)
-if(command == prefix + 'points') {
+if(command == '#' + 'points') {
 	 
 		if(!message.guild.member(client.user).hasPermission('EMBED_LINKS')) return message.channel.send(':no_entry: | I dont have Embed Links permission.');
 		if(!args[1]) {
@@ -3766,7 +3766,7 @@ if(command == prefix + 'points') {
 			message.channel.send({
 				embed: pointsTop
 			});
-		}else if(args[1] == 'reset') {
+		}else if(args[1] == '#' + 'reset') {
 			let pointsReset = new Discord.RichEmbed()
 			.setDescription('**:white_check_mark: | تم تصفير جميع النقاط بنجاح**')
 			.setFooter('Requested by '+message.author.username, message.author.avatarURL)
@@ -3791,7 +3791,7 @@ if(command == prefix + 'points') {
 				message.channel.send({
 					embed: userPoints
 				});
-			}else if(args[2] == 'reset') {
+			}else if(args[2] == '#' + 'reset') {
 				if(points[userM.user.id].points == 0) return message.channel.send(error);
 				points[userM.user.id].points = 0;
 				message.channel.send(`Successfully reset ${userM.user.username} points.`);
