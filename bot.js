@@ -3833,15 +3833,9 @@ if(message.channel.type === 'dm') return;
            .setFooter(client.user.username, client.user.avatarURL);
            m.send({ embed: bc })
            
-       })
-   }
-                 
-   })
                })
            })
-       })
- 
-       
+	   
  onlineonly.on('collect', r => {
     let msge;
     message.channel.send(':pencil: **| Please Write Now The Message To Send :pencil2: **').then(msg => {
@@ -3877,9 +3871,6 @@ message.channel.send(`**:white_check_mark: The Message Has Been Sent The Members
 message.guild.members.filter(m => m.presence.status === 'online').forEach(m => {
     m.send(`${msge}`) 
                 
-    })}
-})
-})
         })
     })
 })
@@ -3937,14 +3928,14 @@ message.guild.members.filter(m => m.presence.status === 'online').forEach(m => {
      })
  }
                
- })
+ 
 
 
 
 
 
   client.on("message", function(message) {
-    var prefix = "#";
+    var prefix  "#";
    if(message.content.startsWith(prefix + "help")) {
     let messageArgs = message.content.split(" ").slice(1).join(" ");
     let messageRPS = message.content.split(" ").slice(2).join(" ");
