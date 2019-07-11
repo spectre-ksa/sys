@@ -4246,7 +4246,7 @@ message.channel.send(`Please wait until the order is finished`).then(msg =>{
 	         let roleembed = new Discord.RichEmbed()
     .setDescription(`
     أمثله على الأوامر :
-    #role @mention -rolename : لأزالة رتبة لعضو معين
+    #role @mention -rolename : To remove a role to a particular member`)
     .setFooter('Requested by '+message.author.username, message.author.avatarURL)
       var args = message.content.split(' ').slice(1);
       var msg = message.content.toLowerCase();
