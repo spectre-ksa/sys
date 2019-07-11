@@ -4282,7 +4282,7 @@ message.channel.send(`Please wait until the order is finished`).then(msg =>{
       if(!role1) return message.channel.send(ee);                message.guild.member(member).removeRole(role1);
              const e = new Discord.RichEmbed()
       
-             .setDescription(':white_check_mark:** Pull Role For **'+member+'**,** '+'**'+'+'+role1.name+'**')
+             .setDescription(':white_check_mark:** Pull Role For **'+member+'**,** '+'**'+'-'+role1.name+'**')
              .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
              .setColor('BLACK')
               message.channel.send(e)
