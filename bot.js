@@ -4114,6 +4114,14 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
 
 
 client.on('message', message => {
+	  let roleembed = new Discord.RichEmbed()
+    .setDescription(`
+    أمثله على الأوامر :
+    #role @mention rolename : لأعطاء رتبة لعضو معين
+    .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+      var args = message.content.split(' ').slice(1);
+      var msg = message.content.toLowerCase();
+      if( !message.guild ) return;
     var prefix = "#"
     let args = message.content.split(' ').slice(1);
     if(message.content.startsWith(prefix + 'role')) {
@@ -4235,9 +4243,17 @@ message.channel.send(`Please wait until the order is finished`).then(msg =>{
 
  
  client.on('message', message => {
+	         let roleembed = new Discord.RichEmbed()
+    .setDescription(`
+    أمثله على الأوامر :
+    #role @mention -rolename : لأزالة رتبة لعضو معين
+    .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+      var args = message.content.split(' ').slice(1);
+      var msg = message.content.toLowerCase();
+      if( !message.guild ) return;
       var prefix = "#"
       let args = message.content.split(' ').slice(1);
-      if(message.content.startsWith(prefix + 'role')) {
+      if(message.content.startsWith(prefix + '-role')) {
           if(!message.member.hasPermission('MANAGE_ROLES')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `MANAGE_ROLES`' );
       let member = message.mentions.users.first();
       let role = args.join(' ').replace(member, '').replace(args[0], '').replace(' ', '');
