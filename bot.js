@@ -10,7 +10,7 @@ const prefix = '#'
 
  client.on('message', msg => {
     if (msg.content === 'test') {
-     msg.channel.send('Im On');
+     msg.channel.send('I’m On');
     }
   });
   
@@ -3720,9 +3720,9 @@ client.on("message", msg => {
 
 client.on('message', async message => {
 if(!points) points = {}
-
+var prefix = ("#")
 	if(message.channel.type !== 'text') return;
-	var prefix = ("#")
+	
 	
 	var command = message.content.toLowerCase().split(" ")[0];
 	var args = message.content.toLowerCase().split(" ");
