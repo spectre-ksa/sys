@@ -3720,7 +3720,7 @@ client.on("message", msg => {
 
 client.on('message', async message => {
 if(!points) points = {}
-
+var prefix = "#";
 	if(message.channel.type !=='text') return;
 	
 	
@@ -3749,7 +3749,7 @@ if(!points) points = {}
 **:small_orange_diamond:** .points reset \`لتصفير جميع النقاط\``)
 .setFooter('Requested by '+message.author.username, message.author.avatarURL)
 .setColor(`#e60909`)
-if(command == '#' + 'points') {
+if(command == prefix + 'points') {
 	 
 		if(!message.guild.member(client.user).hasPermission('EMBED_LINKS')) return message.channel.send(':no_entry: | I dont have Embed Links permission.');
 		if(!args[1]) {
