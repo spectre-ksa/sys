@@ -4252,7 +4252,6 @@ message.channel.send(`Please wait until the order is finished`).then(msg =>{
       var msg = message.content.toLowerCase();
       if( !message.guild ) return;
       var prefix = "#"
-      let args = message.content.split(' ').slice(1);
       if(message.content.startsWith(prefix + '-role')) {
           if(!message.member.hasPermission('MANAGE_ROLES')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `MANAGE_ROLES`' );
       let member = message.mentions.users.first();
