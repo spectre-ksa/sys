@@ -4168,7 +4168,122 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
  
 
  
- 
+ client.on('message', message => {
+      var prefix = "#"
+      let args = message.content.split(' ').slice(1);
+      if(message.content.startsWith(prefix + 'role')) {
+          if(!message.member.hasPermission('MANAGE_ROLES')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `MANAGE_ROLES`' );
+      let member = message.mentions.users.first();
+      let role = args.join(' ').replace(member, '').replace(args[0], '').replace(' ', '');
+      console.log(role);
+      if(member) {
+           if(role.startsWith('.')) {
+             let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
+             console.log(roleRe);
+             let role1 = message.guild.roles.find('name', roleRe);
+             console.log(`hi`);
+      const ee =new Discord.RichEmbed()
+      .setDescription('**:x: I can’t find the role.**')
+      .setFooter('Requested By '+message.author.username,message.author.avatarURL)
+      if(!role1) return message.channel.send(ee);                message.guild.member(member).removeRole(role1.id);
+      
+                  const e = new Discord.RichEmbed()
+      
+              .setDescription(':white_check_mark:** Pull Role For **'+member+'**,** '+'**'+'-'+role1.name+'**')
+             .setFooter('Requested By '+message.author.username,message.author.avatarURL)
+             .setColor('BLACK')
+              message.channel.send(e)
+         } else if(!role.startsWith('>')) {
+             let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
+             let role1 = message.guild.roles.find('name', roleRe);
+      const ee =new Discord.RichEmbed()
+      .setDescription('**:x: I can’t find the role.**')
+      .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
+      if(!role1) return message.channel.send(ee);                message.guild.member(member).removeRole(role1);
+             const e = new Discord.RichEmbed()
+      
+             .setDescription(':white_check_mark:** Pull Role For **'+member+'**,** '+'**'+'+'+role1.name+'**')
+             .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
+             .setColor('BLACK')
+              message.channel.send(e)
+         } else {
+             message.reply(`يجب عليك كتابة اسم الرتبة`);
+         }
+      }
+      else if(args[0] == 'all') {
+      if(role.startsWith('.')) {
+      let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
+      let role1 = message.guild.roles.find('name', roleRe);
+  message.channel.send(`Please wait until the order is finished`).then(msg =>{
+        message.guild.members.forEach(m => {
+         message.guild.member(m).removeRole(role1.id);
+      });
+      msg.edit(`** :white_check_mark:   Done...\n**` +role1.name+`** Has Pull From __${message.guild.members.size}__ Member**`);
+      });
+      }
+      if(role) {
+      let role1 = message.guild.roles.find('name', role);
+      if(!role1) return;
+                message.channel.send(`Please wait until the order is finished`).then(msg =>{
+      message.guild.members.forEach(m => {
+         message.guild.member(m).removeRole(role1);
+      });
+      msg.edit(`** :white_check_mark:   Done...\n**` +  role1.name+`** Has Pull To __${message.guild.members.size}__ Members **`);
+      });
+      }
+      } else if(args[0] == 'humans') {
+      if(role.startsWith('.')) {
+      let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
+      let role1 = message.guild.roles.find('name', roleRe);
+  message.channel.send(`Please wait until the order is finished`).then(msg =>{
+        message.guild.members.forEach(m => {
+         message.guild.member(m).removeRole(role1.id);
+      });
+      msg.edit(`** :white_check_mark:   Done...\n**` +role1.name+`** Has Pull From __${message.guild.members.size}__ Member**`);
+      });
+      }
+      
+      if(role) {
+      let role1 = message.guild.roles.find('name', role);
+      
+      const ee =new Discord.RichEmbed()
+      .setDescription('I Cann’t Find This Role')
+      .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
+      if(!role1) return message.channel.send(ee);
+                message.channel.send(`Please wait until the order is finished`).then(msg =>{
+         message.guild.members.filter(m =>m.user.bot == false).forEach(m => {
+             message.guild.member(m).removeRole(role1);
+         });
+      msg.edit(`** :white_check_mark:   Done...**`);
+      });
+      }
+      } else if(args[0] == 'bots') {
+      if(role.startsWith('.')) {
+      let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
+      let role1 = message.guild.roles.find('name', roleRe);
+                message.channel.send(`Please wait until the order is finished`).then(msg =>{
+        message.guild.members.forEach(m => {
+         message.guild.member(m).removeRole(role1.id);
+      });
+      msg.edit(`** :white_check_mark:  Done...**`);
+      });
+      }
+      if(role) {
+      let role1 = message.guild.roles.find('name', role);
+      const ee =new Discord.RichEmbed()
+      .setDescription('I Cann’t Find This Role')
+      .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
+      if(!role1) return message.channel.send(ee);
+      message.channel.send(`Please wait until the order is finished`).then(msg => {
+         message.guild.members.filter(m =>m.user.bot == true).forEach(m => {
+             message.guild.member(m).removeRole(role1);
+         });
+      msg.edit(`** :white_check_mark:  Done...\n**` +role1.name+`** rank has been pull To __${message.guild.members.size}__ Member**`);
+      });
+      }
+      }
+      }
+      });
 
 
 
