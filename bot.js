@@ -4269,7 +4269,7 @@ message.channel.send(`Please wait until the order is finished`).then(msg =>{
       
                   const e = new Discord.RichEmbed()
       
-              .setDescription(':white_check_mark:** Remove Role For **'+member+'**,'-'+role1.name+'**')
+              .setDescription(':white_check_mark:** Remove Role For **'+member+'**,'+'**'-''-'+role1.name+'**')
              .setFooter('Requested By '+message.author.username,message.author.avatarURL)
              .setColor('BLACK')
               message.channel.send(e)
