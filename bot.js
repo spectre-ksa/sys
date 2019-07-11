@@ -4245,7 +4245,7 @@ message.channel.send(`Please wait until the order is finished`).then(msg =>{
 	         let roleembed = new Discord.RichEmbed()
     .setDescription(`
     أمثله على الأوامر :
-    #role @mention -rolename : To remove a role to a particular member`)
+    #-role @mention rolename : To remove a role to a particular member`)
     .setFooter('Requested by '+message.author.username, message.author.avatarURL)
       var args = message.content.split(' ').slice(1);
       var msg = message.content.toLowerCase();
@@ -4269,7 +4269,7 @@ message.channel.send(`Please wait until the order is finished`).then(msg =>{
       
                   const e = new Discord.RichEmbed()
       
-              .setDescription(':white_check_mark:** Pull Role For **'+member+'**,** '+'**'+'-'+role1.name+'**')
+              .setDescription(':white_check_mark:** Remove Role For **'+member+'**, +'-'+role1.name+'**')
              .setFooter('Requested By '+message.author.username,message.author.avatarURL)
              .setColor('BLACK')
               message.channel.send(e)
