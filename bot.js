@@ -901,7 +901,7 @@ client.on('message', PuP => {
 
 client.on('ready', function(){
     var ms = 10000 ;
-    var setGame = [' #help',`Im on ${client.guilds.size} servers`,`i help ${client.users.size} Members`,'The Best, For The Best',' P.inv '];
+    var setGame = [' #help',`Im on ${client.guilds.size} servers`,`i help ${client.users.size} Members`,'The Best, For The Best',' #inv '];
     var i = -1;
     var j = 0;
     setInterval(function (){
@@ -4253,8 +4253,7 @@ reaction2.on("collect", r => {
       .setDescription(`
       :key:***__اوامر ادارية__***:crown: 
 **
-『#bc ====> رسالة لجميع اعضاء السيرفر
-『#bk ====> رسالة لجميع اعضاء السيرفر 2
+『#bc ====> رسالة برود كاست لأعضاء السيرفر
 『#rolebc ====> رسالة لرتبة معينة
 『#setbot ====> لعمل روم صوتي بعدد البوتات في السيرفر
 『#bans ====> الاعضاء المبندين من سيرفرك
@@ -4867,7 +4866,7 @@ client.on('message', message => {
 var prefix = "#";
 
     if (message.content === prefix + "date") {
-        if (!message.channel.guild) return message.reply('** This command only for servers **');  
+        if (!message.channel.guild) return message.channel.send('** This command only for servers **');  
         var currentTime = new Date(),
             Year = currentTime.getFullYear(),
             Month = currentTime.getMonth() + 1,
@@ -5086,7 +5085,7 @@ reaction1.on("collect", r => {
     message.reply("**# - Done! 🎇**");
 })
 reaction2.on("collect", r => {
-    message.reply("**# - Canceled!**");
+    message.channel.send("**# - Canceled!**");
 })
 })
 }
