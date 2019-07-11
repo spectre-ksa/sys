@@ -3696,7 +3696,7 @@ client.on('message', message => {
 
 client.on("message", msg => {
     const rooms = []
-    msg.guild.channels.forEach(c => {
+    msg.guild.channel.forEach(c => {
         if(c.type !== "voice") return;
         rooms.push(c.name);
 });
