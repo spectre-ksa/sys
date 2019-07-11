@@ -3719,8 +3719,7 @@ client.on("message", msg => {
 
 
 
-               
- client.on('message', message => {
+client.on('message', message => {
 if(message.author.bot) return;
 if(message.channel.type === 'dm') return;
     if(message.content.startsWith(prefix + 'bc')) {
@@ -3821,7 +3820,7 @@ if(message.channel.type === 'dm') return;
            m.send(`${m}`)
            
        })
-   }
+   }})
    if(collected.first().content === 'no') {
    message.channel.send(`**:white_check_mark: The Message Has Been Sent The Members :loudspeaker:**`);
    message.guild.members.filter(m => m.presence.status === 'online').forEach(m => {
@@ -3922,7 +3921,7 @@ message.guild.members.filter(m => m.presence.status === 'online').forEach(m => {
          m.send(`${m}`)
          
      })
- })
+ }})
  if(collected.first().content === 'no') {
  message.channel.send(`**:white_check_mark: The Message Has Been Sent The Members :loudspeaker:**`);
      message.guild.members.forEach(m => {
@@ -4041,7 +4040,7 @@ message.guild.members.filter(m => m.presence.status === 'online').forEach(m => {
  
          m.send(`${msge}`) 
                  
-     })
+     })}
  })
  })
          })
@@ -4049,6 +4048,125 @@ message.guild.members.filter(m => m.presence.status === 'online').forEach(m => {
  })
  })
  });
+ 
+ 
+ 
+ embedonlyrole.on('collect', r => {
+     let msge;
+     let role;
+     message.channel.send(':pencil: **| Please Write Now The Message To Send :pencil2: **').then(msg => {
+  
+         message.channel.awaitMessages(filter, {
+           max: 1,
+           time: 90000,
+           errors: ['time']
+         })
+ 
+         .then(collected => {
+             collected.first().delete();
+             msge = collected.first().content;
+                 msg.edit('✅ **| Now Please Write The Role Name**').then(msg => {
+                 message.channel.awaitMessages(filter, {
+                     max: 1,
+                     time: 90000,
+                     errors: ['time']
+                   })
+         
+         .then(collected => {
+             collected.first().delete();
+             role = collected.first().content;
+                 let rolecheak = message.guild.roles.find('name', `${role}`)
+             msg.edit('✅ **| Do You Want A Mention In The Msg ? [yes OR no] **').then(msg => {
+               message.channel.awaitMessages(filter, {
+                 max: 1,
+                 time: 90000,
+                 errors: ['time']
+               })
+               .then(collected => {
+ 
+                 if(collected.first().content === 'yes') {
+ message.channel.send(`**:white_check_mark: The Message Has Been Sent The Members :loudspeaker:**`);
+                 
+ 
+                     message.guild.members.filter(m => m.roles.get(rolecheak.id)).forEach(m => {
+                         var bc = new Discord.RichEmbed()
+         .setColor('RANDOM')
+         .setTitle(`:mega: New Broadcast`)
+         .addField('🔰Server🔰', message.guild.name)
+         .addField('🚩Sender🚩', message.author.username)
+         .addField('📜Message📜', `${msge}`)
+         .setThumbnail('https://a.top4top.net/p_1008gqyyd1.png')
+         .setFooter(client.user.username, client.user.avatarURL);
+         m.send({ embed: bc })
+ m.send(`${m}`)       
+         
+     })
+ }
+ if(collected.first().content === 'no') {
+ message.channel.send(`**:white_check_mark: The Message Has Been Sent The Members :loudspeaker:**`);
+ message.guild.members.filter(m => m.roles.get(rolecheak.id)).forEach(m => {
+         var bc = new Discord.RichEmbed()
+         .setColor('RANDOM')
+         .setTitle(`:mega: New Broadcast`)
+         .addField('🔰Server🔰', message.guild.name)
+         .addField('🚩Sender🚩', message.author.username)
+         .addField('📜Message📜', `${msge}`)
+         .setThumbnail('https://a.top4top.net/p_1008gqyyd1.png')
+         .setFooter(client.user.username, client.user.avatarURL);
+         m.send({ embed: bc })
+         
+                 
+     })}
+ })
+ })
+         })
+     })
+ })
+ })
+ })
+     cancel.on('collect', r => {
+         let cancelembed = new Discord.RichEmbed()
+         .setTitle('Successfully Canceled :x:')
+      message.channel.sendEmbed(cancelembed)
+         embedmsg.stop();
+         normalmsg.stop();
+         onlyrole.stop();
+         embedonlyrole.stop();
+         embedonlineonly.stop()
+         onlineonly.stop()
+         cancel.stop();
+     })
+ })
+    }});
+
+client.on('message', async message => {
+  let mention = message.mentions.members.first();
+let command = message.content.split(" ")[0];
+   command = command.slice(prefix.length);
+  let args = message.content.split(" ").slice(1);	 
+	if (message.content === ".unmute") {
+    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("**You Donot HavePermission Mute_Members**").then(m => m.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**I donot Have Permission Mute_Members**").then(msg => msg.delete(6000))
+
+  let kinggamer = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+     if(!kinggamer) return message.channel.send('Mention Someone')
+
+
+  let role = message.guild.roles.find (r => r.name === "Muted");
+  
+  if(!role || !kinggamer.roles.has(role.id)) return message.channel.sendMessage(`**:information_source:${mention.user.username} لقد تم فك الميوت عنه مسبقا**`)
+
+  await kinggamer.removeRole(role) 
+  message.channel.sendMessage(`**:white_check_mark: ${mention.user.username}  Unmute> **`);
+  
+  return;
+
+  }
+
+});
+
+ 
+
  
  
 
