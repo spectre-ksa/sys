@@ -4206,10 +4206,7 @@ message.channel.send(`**⛔ The AntiJoin Is __𝐎𝐅𝐅__ !**`)
 
         })
          client.on('message', message => {
-          if (!message.channel.guild) return;
-
-
-   if(message.content.startsWith(prefix + "setJoin")) {
+   if(message.content.startsWith("#" + "setJoin")) {
           let time = message.content.split(" ").slice(1).join(" ");
        if(!message.channel.guild) return;
        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
