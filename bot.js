@@ -995,13 +995,6 @@ var prefix = "#";
  }
 });
 
-client.on('message', message=> {
-    if (message.author.bot) return;
-    if (message.isMentioned(client.user))
-    {
-    message.channel.send("**My Prefix Is** : `#`")
-    }
-});
 
 
 client.on("message", async message => {
@@ -2141,7 +2134,7 @@ client.on("message", message => {
               
           if(!message.channel.guild) return;
    if(message.author.bot) return;
-      if(message.content === prefix + "savatar"){
+      if(message.content === prefix + "avatar server"){
           const embed = new Discord.RichEmbed()
   
       .setTitle(`ServerAvatar${message.guild.name} **  `)
