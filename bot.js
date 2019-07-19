@@ -2169,26 +2169,7 @@ client.on("message", message => {
   
        
   });
-client.on("message", message => { 
-              var args = message.content.substring(prefix.length).split(" ");
-              if (message.content.startsWith("مسح")) {
-                  if(!message.channel.guild) return message.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');         
-     if(!message.member.hasPermission('MANAGE_MESSAGES')) 
-          var msg;
-          msg = parseInt();
-        
-        message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-        message.channel.sendMessage("", {embed: {
-          title: "تــم مسح الشات",
-          color: 0x5016f3, 
-          footer: {
-            
-          }
-        }}).then(msg => {msg.delete(3000)});
-                            }
-  
-       
-  });
+
 
 
 
